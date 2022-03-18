@@ -1,0 +1,39 @@
+.calc-body {
+    margin: 13vh auto;
+    /* box-shadow: 4px 18px 20px 3px #eee; */
+    /* padding: 10px 20px; */
+    height: 70vh;
+    /* width: 30%; */
+    max-width: 480px;
+    /* overflow: overlay; */
+    /* width: 300px; */
+    border: solid 3px darkslategrey;
+    border-radius: 10px;
+    margin-top: 15vh;
+    /*Align to middle*/
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+.btn-cont {
+    margin-left: auto;
+    /* margin-top: 7rem; */
+        margin-right: auto;
+        padding: 10px;
+        border-radius: 5px;
+        min-width: 480px;
+}
+.num-btn {
+    padding: 2rem 2.5rem;
+    margin: 10px;
+  /* width: 50%; */
+}
+.num-btn:hover{
+    background-color: #f3f3f3 !important;
+}
+.bg-light-grey {
+    background-color: #f3f3f3;
+}
+.bg-light-grey:hover {
+    background-color: #ffffff !important;
+}
