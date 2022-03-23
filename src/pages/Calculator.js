@@ -11,7 +11,7 @@ export default function Calculator() {
             readOnly
             name=""
             id="output"
-            className="border-2 my-3 p-3 py-5 w-100 input"
+            className="border-2 my-3 mx- p-3 py-5 w-85 input"
           />
           <div className=" btn-cont ">
             <NumberButton digit={"9"} />
