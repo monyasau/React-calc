@@ -1,7 +1,10 @@
+import { Component } from "react";
 import NumberButton from "../components/NumberButton";
 import OperatorButton from "../components/OperatorButton";
 
-export default function Calculator() {
+export default class Calculator extends Component () {
+  render() {
+    
   return (
     <>
       <div className="">
@@ -17,7 +20,7 @@ export default function Calculator() {
             <NumberButton id={9} digit={"9"} />
             <NumberButton id={8} digit={"8"} />
             <NumberButton id={7} digit={"7"} />
-            <OperatorButton value={"/"} />
+            <OperatorButton value={"÷"} />
           </div>
           <div className=" btn-cont ">
             <NumberButton id={6} digit={"6"} />
@@ -37,4 +40,5 @@ export default function Calculator() {
       </div>
     </>
   );
+  }
 }
