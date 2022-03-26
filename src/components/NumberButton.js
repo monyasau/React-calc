@@ -3,7 +3,7 @@ export default function NumberButton({ numberButtonClicked, digit, id }) {
     <>
       <button
         id={id}
-        onClick={this.numberButtonClicked}
+        onClick={numberButtonClicked}
         className="bg-light fw-bold num-btn h6"
       >
         {digit}

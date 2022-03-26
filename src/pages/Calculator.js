@@ -9,11 +9,14 @@ class Calculator extends react.Component {
     this.state = {
       firstVal: "",
       secVal: "",
-      result: "",
+      result: "0",
     };
   }
 
   render() {
+    function numberButtonClicked () {
+      console.log("ddd");
+    };
     return (
       <>
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
