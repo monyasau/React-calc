@@ -4,19 +4,16 @@ import NumberButton from "../components/NumberButton";
 import OperatorButton from "../components/OperatorButton";
 import OutputBox from "../components/OutputBox";
 class Calculator extends react.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       firstVal: "",
       secVal: "",
       result: "0",
-    };
-  }
+    }
+    changeName = ()=>{
+      console.log("dd");
+    }
 
   render() {
-    function numberButtonClicked () {
-      console.log("ddd");
-    };
     return (
       <>
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
@@ -26,7 +23,7 @@ class Calculator extends react.Component {
             result={this.state.result}
           />
           <div className=" btn-cont ">
-            <NumberButton id={"nine"} digit={"9"} />
+            <NumberButton id={"nine"}  changeName={this.changeName} digit={"9"} />
             <NumberButton id={"eight"} digit={"8"} />
             <NumberButton id={"seven"} digit={"7"} />
             <OperatorButton value={"÷"} />

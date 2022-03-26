@@ -1,9 +1,10 @@
-export default function NumberButton({ numberButtonClicked, digit, id }) {
+export default function NumberButton(props) {
+  const { changeName, digit, id } = props;
   return (
     <>
       <button
         id={id}
-        onClick={numberButtonClicked}
+        onClick={changeName}
         className="bg-light fw-bold num-btn h6"
       >
         {digit}
