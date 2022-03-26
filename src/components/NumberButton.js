@@ -1,12 +1,13 @@
-export default function NumberButton({ digit, id}) {
-//   {
-//     let inputDisplay = () => {
-// console.log(id);
-//     }
-//   }
+export default function NumberButton({ numberButtonClicked, digit, id }) {
   return (
     <>
-      <button className="bg-light fw-bold num-btn h6">{digit}</button>
+      <button
+        id={id}
+        onClick={this.numberButtonClicked}
+        className="bg-light fw-bold num-btn h6"
+      >
+        {digit}
+      </button>
     </>
   );
 }

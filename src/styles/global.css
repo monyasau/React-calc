@@ -1,5 +1,5 @@
 body {
-  padding: 3% ;
+  padding: 3%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -44,7 +44,7 @@ body {
 .num-btn {
   /* padding: 1.5rem 2rem; */
   margin: 8px;
-height: 60px;
+  height: 60px;
   width: 70px;
 }
 .num-btn:hover {
