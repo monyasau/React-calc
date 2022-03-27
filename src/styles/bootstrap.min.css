@@ -6510,6 +6510,9 @@ fieldset:disabled .btn {
 .me-5 {
   margin-right: 3rem !important;
 }
+.me-6 {
+  margin-right: 5.8rem !important;
+}
 .me-auto {
   margin-right: auto !important;
 }
@@ -6551,6 +6554,9 @@ fieldset:disabled .btn {
 }
 .ms-5 {
   margin-left: 3rem !important;
+}
+.ms-6 {
+  margin-left: 6rem !important;
 }
 .ms-auto {
   margin-left: auto !important;

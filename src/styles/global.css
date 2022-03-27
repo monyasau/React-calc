@@ -56,3 +56,10 @@ body {
 .bg-light-grey:hover {
   background-color: #ffffff !important;
 }
+.clear-button {
+  background-color: #ff6347;
+}
+.mx-45 {
+  margin-left: 1.8rem !important;
+  margin-right: 2.9rem !important;
+}

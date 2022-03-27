@@ -5,7 +5,7 @@ export default function NumberButton(props) {
       <button
         id={id}
         onClick={clickedButton}
-        className="bg-light fw-bold num-btn h6"
+        className="bg-light rounded-3 fw-bold num-btn h6"
       >
         {digit}
       </button>

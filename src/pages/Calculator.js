@@ -38,8 +38,8 @@ class Calculator extends react.Component {
             />
           </div>
           <div className="btn-cont">
-            <button className="bg- fw-bold num-btn mx-5  h6">AC</button>
-            <button className="bg-light fw-bold num-btn  mx-5 h6">CE</button>
+            <button className="clear-button rounded-3 fw-bold num-btn me-6  h6" title="Clear the calculator memory">AC</button>
+            <button className="clear-button rounded-3 fw-bold num-btn  ms-6 h6" title="Clear the calculator screen">CE</button>
           </div>
           <div className=" btn-cont ">
             <NumberButton
