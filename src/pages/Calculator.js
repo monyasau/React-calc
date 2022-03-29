@@ -5,7 +5,6 @@ import OutputBox from "../components/OutputBox";
 class Calculator extends Component {
   constructor() {
     super();
-
     this.state = {
       firstVal: "",
       secVal: "",
@@ -13,8 +12,14 @@ class Calculator extends Component {
       answer: "0",
     };
   }
-  // componentDidMount() {}
-  handleAC = () => {
+   onkeypress = (event)=>{
+    this.setState({ lastInput: event.target.value });
+  }
+  componentDidMount() {
+  } 
+  
+  render() {
+  let handleAC = () => {
     this.setState({
       firstVal: "",
       secVal: "",
@@ -23,17 +28,16 @@ class Calculator extends Component {
     });
   };
 
-  handleCE = () => {
+  let handleCE = () => {
     this.setState({
       lastInput: "",
     });
   };
 
-  handleNumberClick = (digit) => {
-    console.log(digit);
+  let handleNumberClick = (id) => {
+    // this.setState({ lastInput: digit });
+    console.log(id);
   };
-
-  render() {
     return (
       <>
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
@@ -41,21 +45,21 @@ class Calculator extends Component {
             <OutputBox
               firstVal={this.state.firstVal}
               secVal={this.state.secVal}
-              result={this.state.result}
+              result={this.state.answer}
             />
           </div>
           <div className="btn-cont">
             <button
               className="clear-button rounded-3 fw-bold num-btn me-6  h6"
               title="Clear the calculator memory"
-              onClick={this.handleAC}
+              onClick={handleAC}
             >
               AC
             </button>
             <button
               className="clear-button rounded-3 fw-bold num-btn  ms-6 h6"
               title="Clear the calculator screen"
-              onClick={this.handleCE}
+              onClick={handleCE}
             >
               CE
             </button>
@@ -64,17 +68,17 @@ class Calculator extends Component {
             <NumberButton
               key={"nine"}
               digit={"9"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <NumberButton
               key={"eight"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
               digit={"8"}
             />
             <NumberButton
               key={"seven"}
               digit={"7"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <OperatorButton value={"÷"} />
           </div>
@@ -82,40 +86,40 @@ class Calculator extends Component {
             <NumberButton
               key={"six"}
               digit={"6"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <NumberButton
               key={"five"}
               digit={"5"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <NumberButton
               key={"four"}
               digit={"4"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <OperatorButton value={"-"} />
             <NumberButton
               key={"three"}
               digit={"3"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <NumberButton
               key={"two"}
               digit={"2"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <NumberButton
               key={"one"}
               digit={"1"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <OperatorButton value={"+"} />
             <OperatorButton value={"."} />
             <NumberButton
               key={"0"}
               digit={"0"}
-              handleNumberClick={this.handleNumberClick}
+              handleNumberClick={handleNumberClick}
             />
             <OperatorButton value={"X"} />
             <OperatorButton value={"="} />

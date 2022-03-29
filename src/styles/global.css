@@ -63,3 +63,6 @@ body {
   margin-left: 1.8rem !important;
   margin-right: 2.9rem !important;
 }
+.rtl {
+  direction: rtl;
+}

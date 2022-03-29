@@ -1,12 +1,23 @@
-export default function OutputBox({ firstVal, secVal, result }) {
+export default function OutputBox({ firstVal, secVal, lastInput, result }) {
   return (
+    <div className="border-2 border border-secondary my-3 mx-45 px-2 py-3 w-85 rounded-3" >
+      
     <input
       type="text"
-      value={(firstVal, secVal, result)}
+      value={(firstVal, secVal, lastInput)}
       readOnly
       name=""
       id="output"
-      className="border-2 my-3 mx-45 p-3 py-5 w-85 rounded-3"
+      className="border-0 rtl py-1 w-100 rounded-3"
     />
+    <input
+      type="text"
+      value={( result)}
+      readOnly
+      name=""
+      id="output"
+      className="border-0 rtl py-1 w-100 rounded-3"
+    />
+    </div>
   );
 }
