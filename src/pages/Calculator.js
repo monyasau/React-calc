@@ -13,6 +13,16 @@ class Calculator extends Component {
     };
   }
 
+  inputFilter = (event)=>{
+if (!(event.key === "")) {
+  let currentInput = event.key;
+ let  search =()=>{
+  console.log("string".search(/[i-n]+/));
+  }
+} else {
+  console.log("empty");
+}
+  }
   keypressHandler = (event) => {
     if (this.state.firstVal === "") {
       this.setState({ firstVal: event.key });
@@ -24,9 +34,9 @@ class Calculator extends Component {
     // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
   };
   componentDidMount() {
-    const { keypressHandler } = this;
+    const { inputFilter } = this;
     document.addEventListener("keyup", (event) => {
-      keypressHandler(event);
+      inputFilter(event);
     });
   }
 
