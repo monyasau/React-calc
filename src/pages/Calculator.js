@@ -13,21 +13,30 @@ class Calculator extends Component {
     };
   }
 
-  inputFilter = (event)=>{
-if (!(event.key === "")) {
-  let currentInput = event.key;
- let  search =()=>{
-  console.log("string".search(/[i-n]+/));
-  }
-} else {
-  console.log("empty");
-}
-  }
+  inputFilter = (event) => {
+    if (!(event.key === "")) {
+      let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
+      // console.log(unvreifiedInput);
+      if (unvreifiedInput === true) {
+        let verifiedInput = event.key;
+        this.setState({
+          firstVal: verifiedInput,
+        })
+      } else if (!(this.state.firstVal === "")) {
+        console.log("too bad");
+      }
+      // let isCharacterANumber = (currentInput) => {
+      //   return !(/[a-zA-Z]/).test(currentInput)
+      // }
+    } else {
+      console.log("empty");
+    }
+  };
   keypressHandler = (event) => {
     if (this.state.firstVal === "") {
       this.setState({ firstVal: event.key });
-    } else {
-      
+    } else if (!(this.state.firstVal === "")){
+      console.log("first val not empty");
     }
     // this.setState({ answer: event.key});
     // this.setState({ lastInput: event.key});
