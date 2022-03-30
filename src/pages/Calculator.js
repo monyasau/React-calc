@@ -12,32 +12,44 @@ class Calculator extends Component {
       answer: "0",
     };
   }
-   onkeypress = (event)=>{
-    this.setState({ lastInput: event.target.value });
-  }
+
+  keypressHandler = (event) => {
+    if (this.state.firstVal === "") {
+      this.setState({ firstVal: event.key });
+    } else {
+      
+    }
+    // this.setState({ answer: event.key});
+    // this.setState({ lastInput: event.key});
+    // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
+  };
   componentDidMount() {
-  } 
-  
+    const { keypressHandler } = this;
+    document.addEventListener("keyup", (event) => {
+      keypressHandler(event);
+    });
+  }
+
   render() {
-  let handleAC = () => {
-    this.setState({
-      firstVal: "",
-      secVal: "",
-      lastInput: "",
-      answer: "0",
-    });
-  };
+    let handleAC = () => {
+      this.setState({
+        firstVal: "",
+        secVal: "",
+        lastInput: "",
+        answer: "0",
+      });
+    };
 
-  let handleCE = () => {
-    this.setState({
-      lastInput: "",
-    });
-  };
+    let handleCE = () => {
+      this.setState({
+        lastInput: "",
+      });
+    };
 
-  let handleNumberClick = (id) => {
-    // this.setState({ lastInput: digit });
-    console.log(id);
-  };
+    let handleNumberClick = (id) => {
+      // this.setState({ lastInput: digit });
+      console.log(id);
+    };
     return (
       <>
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
