@@ -21,6 +21,7 @@ class Calculator extends Component {
         let verifiedInput = event.key;
         this.setState({
           firstVal: verifiedInput,
+          lastInput: verifiedInput,
         });
       }
     } else if (!(this.state.firstVal === "")) {
@@ -29,6 +30,7 @@ class Calculator extends Component {
         let verifiedInput = event.key;
         this.setState({
           firstVal: this.state.firstVal + verifiedInput,
+          lastInput: verifiedInput,
         });
       }
     }

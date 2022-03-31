@@ -66,3 +66,18 @@ body {
 .rtl {
   direction: rtl;
 }
+.hidden-scroll {
+  overflow-y: initial;
+  overflow-x: scroll;
+}
+.hidden-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.hidden-scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px #666;
+}
+.hidden-scroll::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: green;
+  /* outline: 5px  solid gray; */
+}
