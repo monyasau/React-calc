@@ -7,14 +7,13 @@ class Calculator extends Component {
     super();
     this.state = {
       firstVal: "",
-      secVal: "",
       lastInput: "",
       answer: "0",
     };
   }
 
   inputFilter = (event) => {
-    if (!(event.key === "#") && this.state.firstVal === "") {
+    if (!(event.key === "") && this.state.firstVal === "") {
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
       // console.log(unvreifiedInput);
       if (unvreifiedInput === true) {
@@ -24,6 +23,10 @@ class Calculator extends Component {
           lastInput: verifiedInput,
         });
       }
+    } else if (!(this.state.firstVal === "") && event.keyCode === 13) {
+  console.log(eval(this.state.firstVal));
+
+
     } else if (!(this.state.firstVal === "")) {
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
       if (unvreifiedInput === true) {
@@ -34,6 +37,7 @@ class Calculator extends Component {
         });
       }
     }
+    
   };
   keypressHandler = (event) => {
     if (this.state.firstVal === "") {
