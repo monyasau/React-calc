@@ -6,33 +6,38 @@ class Calculator extends Component {
   constructor() {
     super();
     this.state = {
-      firstVal: "",
+      inputedCalculationQuery: "",
       lastInput: "",
       answer: "0",
     };
   }
 
   inputFilter = (event) => {
-    if (!(event.key === "") && this.state.firstVal === "") {
+    if (!(event.key === "") && this.state.inputedCalculationQuery === "") {
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
       // console.log(unvreifiedInput);
       if (unvreifiedInput === true) {
         let verifiedInput = event.key;
         this.setState({
-          firstVal: verifiedInput,
+          inputedCalculationQuery: verifiedInput,
           lastInput: verifiedInput,
         });
       }
-    } else if (!(this.state.firstVal === "") && event.keyCode === 13) {
-  console.log(eval(this.state.firstVal));
+    } else if (!(this.state.inputedCalculationQuery === "") && event.keyCode === 13) {
+      let evalResult =eval(this.state.inputedCalculationQuery);
+      this.setState({
+        result: evalResult,
+      })
+  console.log(evalResult);
 
 
-    } else if (!(this.state.firstVal === "")) {
+
+    } else if (!(this.state.inputedCalculationQuery === "")) {
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
       if (unvreifiedInput === true) {
         let verifiedInput = event.key;
         this.setState({
-          firstVal: this.state.firstVal + verifiedInput,
+          inputedCalculationQuery: this.state.inputedCalculationQuery + verifiedInput,
           lastInput: verifiedInput,
         });
       }
@@ -40,9 +45,9 @@ class Calculator extends Component {
     
   };
   keypressHandler = (event) => {
-    if (this.state.firstVal === "") {
-      this.setState({ firstVal: event.key });
-    } else if (!(this.state.firstVal === "")) {
+    if (this.state.inputedCalculationQuery === "") {
+      this.setState({ inputedCalculationQuery: event.key });
+    } else if (!(this.state.inputedCalculationQuery === "")) {
       console.log("first val not empty");
     }
     // this.setState({ answer: event.key});
@@ -59,7 +64,7 @@ class Calculator extends Component {
   render() {
     let handleAC = () => {
       this.setState({
-        firstVal: "",
+        inputedCalculationQuery: "",
         secVal: "",
         lastInput: "",
         answer: "0",
@@ -81,7 +86,7 @@ class Calculator extends Component {
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
           <div className="output-cont">
             <OutputBox
-              firstVal={this.state.firstVal}
+              inputedCalculationQuery={this.state.inputedCalculationQuery}
               secVal={this.state.secVal}
               result={this.state.answer}
             />
