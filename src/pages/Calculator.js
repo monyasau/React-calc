@@ -26,7 +26,7 @@ class Calculator extends Component {
     } else if (!(this.state.inputedCalculationQuery === "") && event.keyCode === 13) {
       let evalResult =eval(this.state.inputedCalculationQuery);
       this.setState({
-        result: evalResult,
+        answer: evalResult,
       })
   console.log(evalResult);
 
@@ -87,7 +87,6 @@ class Calculator extends Component {
           <div className="output-cont">
             <OutputBox
               inputedCalculationQuery={this.state.inputedCalculationQuery}
-              secVal={this.state.secVal}
               result={this.state.answer}
             />
           </div>
