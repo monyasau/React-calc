@@ -76,10 +76,10 @@ class Calculator extends Component {
       });
     };
 
-    let handleNumberClick = (id) => {
-      // this.setState({ answer: "id" });
-      console.log(id);
-    };
+    let handleNumberClick = e => {
+      console.log(e);
+        const value = e.target.getAttribute('data-value');
+    }
     return (
       <>
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
@@ -109,7 +109,7 @@ class Calculator extends Component {
             <NumberButton
               key={"nine"}
               digit={"9"}
-              handleNumberClick={handleNumberClick(2)}
+              onClick={handleNumberClick}
             />
             <NumberButton
               key={"eight"}
