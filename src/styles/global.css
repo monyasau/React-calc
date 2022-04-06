@@ -81,3 +81,6 @@ body {
   background-color: green;
   /* outline: 5px  solid gray; */
 }
+.output-box {
+  height: 39px;
+}

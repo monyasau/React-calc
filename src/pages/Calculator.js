@@ -65,7 +65,6 @@ class Calculator extends Component {
     let handleAC = () => {
       this.setState({
         inputedCalculationQuery: "",
-        secVal: "",
         lastInput: "",
         answer: "0",
       });
@@ -78,7 +77,7 @@ class Calculator extends Component {
     };
 
     let handleNumberClick = (id) => {
-      // this.setState({ lastInput: digit });
+      // this.setState({ answer: "id" });
       console.log(id);
     };
     return (
@@ -110,17 +109,18 @@ class Calculator extends Component {
             <NumberButton
               key={"nine"}
               digit={"9"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={handleNumberClick(2)}
             />
             <NumberButton
               key={"eight"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
               digit={"8"}
             />
             <NumberButton
               key={"seven"}
+              id={"7"}
               digit={"7"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <OperatorButton value={"÷"} />
           </div>
@@ -128,40 +128,40 @@ class Calculator extends Component {
             <NumberButton
               key={"six"}
               digit={"6"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <NumberButton
               key={"five"}
               digit={"5"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <NumberButton
               key={"four"}
               digit={"4"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <OperatorButton value={"-"} />
             <NumberButton
               key={"three"}
               digit={"3"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <NumberButton
               key={"two"}
               digit={"2"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <NumberButton
               key={"one"}
               digit={"1"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <OperatorButton value={"+"} />
             <OperatorButton value={"."} />
             <NumberButton
               key={"0"}
               digit={"0"}
-              handleNumberClick={handleNumberClick}
+              handleNumberClick={this.inputFilter}
             />
             <OperatorButton value={"X"} />
             <OperatorButton value={"="} />
