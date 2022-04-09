@@ -4,7 +4,7 @@ export default function NumberButton( { onClick, digit, id } ) {
   return (
     <>
       <button
-        id={id}
+        id={digit}
         onClick={onClick}
         className="bg-light rounded-3 fw-bold num-btn h6"
       >
