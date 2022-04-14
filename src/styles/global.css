@@ -69,18 +69,21 @@ body {
 .hidden-scroll {
   overflow-y: initial;
   overflow-x: scroll;
+  border-top:  solid #666 2px;
 }
 .hidden-scroll::-webkit-scrollbar {
   height: 4px;
 }
 .hidden-scroll::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px #666;
+  /* box-shadow: inset 0 0 2px #666; */
 }
 .hidden-scroll::-webkit-scrollbar-thumb {
   border-radius: 6px;
-  background-color: green;
+  /* background-color: green; */
   /* outline: 5px  solid gray; */
 }
 .output-box {
+  width: fit-content;
+  margin-left: auto;
   height: 39px;
 }

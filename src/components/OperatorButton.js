@@ -1,7 +1,13 @@
-export default function OperatorButton({ value }) {
+export default function OperatorButton({ onClick, operatorKey, id, value }) {
   return (
     <>
-      <button className="bg-light-grey rounded-3 fw-bold num-btn">{value}</button>
+      <button
+        id={operatorKey}
+        onClick={onClick}
+        className="bg-light-grey rounded-3 fw-bold num-btn"
+      >
+        {value}
+      </button>
     </>
   );
 }

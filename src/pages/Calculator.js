@@ -13,36 +13,50 @@ class Calculator extends Component {
   }
 
   inputFilter = (event) => {
+    // we recieve the keyboard input as a parameter
     if (!(event.key === "") && this.state.inputedCalculationQuery === "") {
+      //we check if the calculator state is empty
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
-      // console.log(unvreifiedInput);
+      // we check if the input is not a letter
       if (unvreifiedInput === true) {
         let verifiedInput = event.key;
+        // and we update the state if its not a letter
         this.setState({
           inputedCalculationQuery: verifiedInput,
-          lastInput: verifiedInput,
+          // lastInput: "lanre".split(""),
         });
       }
-    } else if (!(this.state.inputedCalculationQuery === "") && event.keyCode === 13) {
-      let evalResult =eval(this.state.inputedCalculationQuery);
+    }
+    //we check whether the input is either delete or backspace
+    else if (
+      !(this.state.inputedCalculationQuery === "") &&
+      (event.keyCode === 8 || event.keyCode === 46)
+    ) {
+      this.handleBackspace(); //run function handleBackspace
+    }//we check if the else if (
+      !(this.state.inputedCalculationQuery === "") &&
+      event.keyCode === 13
+    ) {
+      let evalResult = eval(this.state.inputedCalculationQuery);
       this.setState({
         answer: evalResult,
-      })
-  console.log(evalResult);
+        inputedCalculationQuery: evalResult,
+      });
+      // console.log(evalResult);
+      // let log = {
 
-
-
+      // }
     } else if (!(this.state.inputedCalculationQuery === "")) {
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
       if (unvreifiedInput === true) {
         let verifiedInput = event.key;
         this.setState({
-          inputedCalculationQuery: this.state.inputedCalculationQuery + verifiedInput,
+          inputedCalculationQuery:
+            this.state.inputedCalculationQuery + verifiedInput,
           lastInput: verifiedInput,
         });
       }
     }
-    
   };
   keypressHandler = (event) => {
     if (this.state.inputedCalculationQuery === "") {
@@ -54,6 +68,16 @@ class Calculator extends Component {
     // this.setState({ lastInput: event.key});
     // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
   };
+  handleBackspace = () => {
+    let queriesToArray = this.state.inputedCalculationQuery.split("");
+    queriesToArray.pop();
+    queriesToArray = queriesToArray.join("");
+    //  console.log(queriesToArray);
+    this.setState({
+      // inputedCalculationQuery: this.state.inputedCalculationQuery.replace(this.state.lastInput, ""),
+      inputedCalculationQuery: queriesToArray,
+    });
+  };
   componentDidMount() {
     const { inputFilter } = this;
     document.addEventListener("keyup", (event) => {
@@ -62,7 +86,7 @@ class Calculator extends Component {
   }
 
   render() {
-    let handleAC = () => {
+    let handleC = () => {
       this.setState({
         inputedCalculationQuery: "",
         lastInput: "",
@@ -70,16 +94,61 @@ class Calculator extends Component {
       });
     };
 
-    let handleCE = () => {
-      this.setState({
-        lastInput: "",
-      });
+    let handleOperatorClick = (e) => {
+      let value = e.target.getAttribute("id");
+      if (!(this.state.inputedCalculationQuery === "") && value === "=") {
+        let evalResult = eval(this.state.inputedCalculationQuery);
+        this.setState({
+          answer: evalResult,
+          inputedCalculationQuery: evalResult,
+        });
+      } else if (!(this.state.inputedCalculationQuery === "")) {
+        this.setState({
+          inputedCalculationQuery: this.state.inputedCalculationQuery + value,
+          lastInput: value,
+        });
+      }
     };
-
-    let handleNumberClick = e => {
-      console.log(e);
-        const value = e.target.getAttribute('data-value');
-    }
+    let handleNumberClick = (e) => {
+      // console.log(e);
+      let value = e.target.getAttribute("id");
+      if (value === ".") {
+        if (this.state.inputedCalculationQuery === "") {
+          this.setState({
+            // inputedCalculationQuery: this.state.inputedCalculationQuery + ".0",
+            inputedCalculationQuery: "0" + value,
+            lastInput: value,
+          });
+        } else if (!(this.state.inputedCalculationQuery === "")) {
+          this.setState({
+            inputedCalculationQuery: this.state.inputedCalculationQuery + value,
+            lastInput: value,
+          });
+        }
+        // this.setState({
+        //   inputedCalculationQuery: this.state.inputedCalculationQuery + value,
+        //   lastInput: value,
+        // });
+      } else if (this.state.inputedCalculationQuery === "") {
+        this.setState({
+          inputedCalculationQuery: value,
+          lastInput: value,
+        });
+      }
+      // else if (!(this.state.inputedCalculationQuery === "") && (value === ".")) {
+      //   console.log("tadaa");
+      //   this.setState({
+      //     inputedCalculationQuery: this.state.inputedCalculationQuery + value,
+      //     lastInput: value,
+      //   });
+      // }
+      else if (!(this.state.inputedCalculationQuery === "")) {
+        this.setState({
+          inputedCalculationQuery: this.state.inputedCalculationQuery + value,
+          lastInput: value,
+        });
+      }
+    };
     return (
       <>
         <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
@@ -93,78 +162,58 @@ class Calculator extends Component {
             <button
               className="clear-button rounded-3 fw-bold num-btn me-6  h6"
               title="Clear the calculator memory"
-              onClick={handleAC}
+              onClick={handleC}
             >
               AC
             </button>
             <button
               className="clear-button rounded-3 fw-bold num-btn  ms-6 h6"
-              title="Clear the calculator screen"
-              onClick={handleCE}
+              title="Delete the last input"
+              onClick={this.handleBackspace}
             >
-              CE
+              &#8656; DEL
             </button>
           </div>
           <div className=" btn-cont ">
-            <NumberButton
-              key={"nine"}
-              digit={"9"}
-              onClick={handleNumberClick}
+            <NumberButton digit={"9"} onClick={handleNumberClick} />
+            <NumberButton onClick={handleNumberClick} digit={"8"} />
+            <NumberButton digit={"7"} onClick={handleNumberClick} />
+            <OperatorButton
+              onClick={handleOperatorClick}
+              operatorKey={"/"}
+              value={"÷"}
             />
-            <NumberButton
-              key={"eight"}
-              handleNumberClick={this.inputFilter}
-              digit={"8"}
-            />
-            <NumberButton
-              key={"seven"}
-              id={"7"}
-              digit={"7"}
-              handleNumberClick={this.inputFilter}
-            />
-            <OperatorButton value={"÷"} />
           </div>
           <div className=" btn-cont ">
-            <NumberButton
-              key={"six"}
-              digit={"6"}
-              handleNumberClick={this.inputFilter}
+            <NumberButton digit={"6"} onClick={handleNumberClick} />
+            <NumberButton digit={"5"} onClick={handleNumberClick} />
+            <NumberButton digit={"4"} onClick={handleNumberClick} />
+            <OperatorButton
+              onClick={handleOperatorClick}
+              operatorKey={"-"}
+              value={"-"}
             />
-            <NumberButton
-              key={"five"}
-              digit={"5"}
-              handleNumberClick={this.inputFilter}
+            <NumberButton digit={"3"} onClick={handleNumberClick} />
+            <NumberButton digit={"2"} onClick={handleNumberClick} />
+            <NumberButton digit={"1"} onClick={handleNumberClick} />
+            <OperatorButton
+              onClick={handleOperatorClick}
+              operatorKey={"+"}
+              value={"+"}
             />
-            <NumberButton
-              key={"four"}
-              digit={"4"}
-              handleNumberClick={this.inputFilter}
+
+            <NumberButton digit={"."} onClick={handleNumberClick} />
+            <NumberButton digit={"0"} onClick={handleNumberClick} />
+            <OperatorButton
+              onClick={handleOperatorClick}
+              operatorKey={"*"}
+              value={"×"}
             />
-            <OperatorButton value={"-"} />
-            <NumberButton
-              key={"three"}
-              digit={"3"}
-              handleNumberClick={this.inputFilter}
+            <OperatorButton
+              onClick={handleOperatorClick}
+              operatorKey={"="}
+              value={"="}
             />
-            <NumberButton
-              key={"two"}
-              digit={"2"}
-              handleNumberClick={this.inputFilter}
-            />
-            <NumberButton
-              key={"one"}
-              digit={"1"}
-              handleNumberClick={this.inputFilter}
-            />
-            <OperatorButton value={"+"} />
-            <OperatorButton value={"."} />
-            <NumberButton
-              key={"0"}
-              digit={"0"}
-              handleNumberClick={this.inputFilter}
-            />
-            <OperatorButton value={"X"} />
-            <OperatorButton value={"="} />
           </div>
         </div>
       </>
