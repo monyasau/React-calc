@@ -6214,6 +6214,9 @@ fieldset:disabled .btn {
 .w-auto {
   width: auto !important;
 }
+.w-fc {
+  width: fit-content;
+}
 .mw-100 {
   max-width: 100% !important;
 }

@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import NumberButton from "../components/NumberButton";
 import OperatorButton from "../components/OperatorButton";
 import OutputBox from "../components/OutputBox";
-class Calculator extends Component {
+export default class Calculator extends Component {
   constructor() {
     super();
+    //super has to be present for "this" to work
     this.state = {
       inputedCalculationQuery: "",
       lastInput: "",
@@ -13,40 +14,57 @@ class Calculator extends Component {
   }
 
   inputFilter = (event) => {
-    // we recieve the keyboard input as a parameter
-    if (!(event.key === "") && this.state.inputedCalculationQuery === "") {
-      //we check if the calculator state is empty
+    //recieve the keyboard input as a parameter
+    if (event.key === ".") {
+      //if the keyboard input is dot run the following
+      if (this.state.inputedCalculationQuery === "") {
+        this.setState({
+          inputedCalculationQuery: "0" + event.key,
+          lastInput: event.key,
+        });
+      } else if (!(this.state.inputedCalculationQuery === "")) {
+        this.setState({
+          inputedCalculationQuery:
+            this.state.inputedCalculationQuery + event.key,
+          lastInput: event.key,
+        });
+      }
+    } else if (
+      !(event.key === "") &&
+      this.state.inputedCalculationQuery === ""
+    ) {
+      // check if the calculator state is empty
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
-      // we check if the input is not a letter
+      // check if the input is not a letter
       if (unvreifiedInput === true) {
         let verifiedInput = event.key;
-        // and we update the state if its not a letter
+        // and update the state if its not a letter
         this.setState({
           inputedCalculationQuery: verifiedInput,
-          // lastInput: "lanre".split(""),
         });
       }
     }
-    //we check whether the input is either delete or backspace
+    //check whether the input is either delete or backspace
     else if (
       !(this.state.inputedCalculationQuery === "") &&
       (event.keyCode === 8 || event.keyCode === 46)
     ) {
       this.handleBackspace(); //run function handleBackspace
-    }//we check if the else if (
+    } //check if the enter button is pressed
+    else if (
       !(this.state.inputedCalculationQuery === "") &&
       event.keyCode === 13
     ) {
+      // then solve the calculation
       let evalResult = eval(this.state.inputedCalculationQuery);
+      // update the answer
       this.setState({
         answer: evalResult,
         inputedCalculationQuery: evalResult,
       });
-      // console.log(evalResult);
-      // let log = {
-
-      // }
-    } else if (!(this.state.inputedCalculationQuery === "")) {
+    }
+    // if the state is not empty add the current input to the state
+    else if (!(this.state.inputedCalculationQuery === "")) {
       let unvreifiedInput = !/[a-zA-Z]/.test(event.key);
       if (unvreifiedInput === true) {
         let verifiedInput = event.key;
@@ -59,14 +77,11 @@ class Calculator extends Component {
     }
   };
   keypressHandler = (event) => {
+    //when a button is pressed check if state is empty
     if (this.state.inputedCalculationQuery === "") {
       this.setState({ inputedCalculationQuery: event.key });
     } else if (!(this.state.inputedCalculationQuery === "")) {
-      console.log("first val not empty");
     }
-    // this.setState({ answer: event.key});
-    // this.setState({ lastInput: event.key});
-    // console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
   };
   handleBackspace = () => {
     let queriesToArray = this.state.inputedCalculationQuery.split("");
@@ -79,14 +94,15 @@ class Calculator extends Component {
     });
   };
   componentDidMount() {
-    const { inputFilter } = this;
+    // once the app is loaded successfully wait till the keyboard is pressed then run inputFilter
     document.addEventListener("keyup", (event) => {
-      inputFilter(event);
+      this.inputFilter(event);
     });
   }
 
   render() {
-    let handleC = () => {
+    let Clear = () => {
+      // clear the state
       this.setState({
         inputedCalculationQuery: "",
         lastInput: "",
@@ -95,14 +111,17 @@ class Calculator extends Component {
     };
 
     let handleOperatorClick = (e) => {
+      //recieve the click button as parameter
       let value = e.target.getAttribute("id");
       if (!(this.state.inputedCalculationQuery === "") && value === "=") {
+        //when the equal button is pressed solve the calculation
         let evalResult = eval(this.state.inputedCalculationQuery);
         this.setState({
           answer: evalResult,
           inputedCalculationQuery: evalResult,
         });
       } else if (!(this.state.inputedCalculationQuery === "")) {
+        //or if its an other operator add it to the calulation
         this.setState({
           inputedCalculationQuery: this.state.inputedCalculationQuery + value,
           lastInput: value,
@@ -110,12 +129,12 @@ class Calculator extends Component {
       }
     };
     let handleNumberClick = (e) => {
-      // console.log(e);
+      // recieve the clicked button as a parameter
       let value = e.target.getAttribute("id");
+      //if the clicked button is dot and its the first value
       if (value === ".") {
         if (this.state.inputedCalculationQuery === "") {
           this.setState({
-            // inputedCalculationQuery: this.state.inputedCalculationQuery + ".0",
             inputedCalculationQuery: "0" + value,
             lastInput: value,
           });
@@ -125,24 +144,14 @@ class Calculator extends Component {
             lastInput: value,
           });
         }
-        // this.setState({
-        //   inputedCalculationQuery: this.state.inputedCalculationQuery + value,
-        //   lastInput: value,
-        // });
       } else if (this.state.inputedCalculationQuery === "") {
+        // if its the first input then set it to state
         this.setState({
           inputedCalculationQuery: value,
           lastInput: value,
         });
-      }
-      // else if (!(this.state.inputedCalculationQuery === "") && (value === ".")) {
-      //   console.log("tadaa");
-      //   this.setState({
-      //     inputedCalculationQuery: this.state.inputedCalculationQuery + value,
-      //     lastInput: value,
-      //   });
-      // }
-      else if (!(this.state.inputedCalculationQuery === "")) {
+      } else if (!(this.state.inputedCalculationQuery === "")) {
+        // if its not the first input then add it to state
         this.setState({
           inputedCalculationQuery: this.state.inputedCalculationQuery + value,
           lastInput: value,
@@ -162,7 +171,7 @@ class Calculator extends Component {
             <button
               className="clear-button rounded-3 fw-bold num-btn me-6  h6"
               title="Clear the calculator memory"
-              onClick={handleC}
+              onClick={Clear}
             >
               AC
             </button>
@@ -216,8 +225,11 @@ class Calculator extends Component {
             />
           </div>
         </div>
+        <div className="border border-1 p-1 w-fc mx-auto mt-4">
+          Keyboard input is allowed
+        </div>
       </>
     );
   }
 }
-export default Calculator;
+// export default Calculator;
