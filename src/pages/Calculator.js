@@ -160,30 +160,30 @@ export default class Calculator extends Component {
     };
     return (
       <>
-        <div className=" container-fluid  border border-dark border-2 rounded-1 calc-body">
+        <div className=" container-fluid  border border-dark border-1-5 rounded-1 calc-body">
           <div className="output-cont">
             <OutputBox
               inputedCalculationQuery={this.state.inputedCalculationQuery}
               result={this.state.answer}
             />
           </div>
-          <div className="btn-cont">
+          <div className=" btn-cont ac-del row">
             <button
-              className="clear-button rounded-3 fw-bold num-btn me-6  h6"
+              className="clear-button border-1-5 rounded-3 fw-bold  h6 me-auto col col-3"
               title="Clear the calculator memory"
               onClick={Clear}
             >
               AC
             </button>
             <button
-              className="clear-button rounded-3 fw-bold num-btn  ms-6 h6"
+              className="del-button border-1-5  rounded-3 fw-bold  h6  ms-auto col col-3"
               title="Delete the last input"
               onClick={this.handleBackspace}
             >
               &#8656; DEL
             </button>
           </div>
-          <div className=" btn-cont ">
+          <div className=" btn-cont row ">
             <NumberButton digit={"9"} onClick={handleNumberClick} />
             <NumberButton onClick={handleNumberClick} digit={"8"} />
             <NumberButton digit={"7"} onClick={handleNumberClick} />
@@ -193,7 +193,7 @@ export default class Calculator extends Component {
               value={"÷"}
             />
           </div>
-          <div className=" btn-cont ">
+          <div className=" btn-cont row">
             <NumberButton digit={"6"} onClick={handleNumberClick} />
             <NumberButton digit={"5"} onClick={handleNumberClick} />
             <NumberButton digit={"4"} onClick={handleNumberClick} />
@@ -202,6 +202,8 @@ export default class Calculator extends Component {
               operatorKey={"-"}
               value={"-"}
             />
+          </div>
+          <div className=" btn-cont row">
             <NumberButton digit={"3"} onClick={handleNumberClick} />
             <NumberButton digit={"2"} onClick={handleNumberClick} />
             <NumberButton digit={"1"} onClick={handleNumberClick} />
@@ -210,7 +212,8 @@ export default class Calculator extends Component {
               operatorKey={"+"}
               value={"+"}
             />
-
+          </div>
+          <div className=" btn-cont row">
             <NumberButton digit={"."} onClick={handleNumberClick} />
             <NumberButton digit={"0"} onClick={handleNumberClick} />
             <OperatorButton
@@ -232,4 +235,3 @@ export default class Calculator extends Component {
     );
   }
 }
-// export default Calculator;

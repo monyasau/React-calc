@@ -17,8 +17,8 @@ body {
 
 .calc-body {
   /* margin: 13vh auto; */
-  /* box-shadow: 4px 18px 20px 3px #eee; */
-  /* padding: 10px 20px; */
+  box-shadow: 4px 18px 20px 3px #eee;
+  padding: 5px 20px;
   height: fit-content;
   /* width: 30%; */
   max-width: 400px;
@@ -30,22 +30,17 @@ body {
   /*Align to middle*/
   margin-left: auto;
   margin-right: auto;
-  padding: 5px;
 }
 .btn-cont {
-  margin-left: auto;
-  /* margin-top: 7rem; */
-  margin-right: auto;
+  /* margin: 0; */
   padding: 6px;
-  width: fit-content;
+  /* width: fit-content; */
   border-radius: 5px;
-  max-width: 360px;
 }
 .num-btn {
-  /* padding: 1.5rem 2rem; */
-  margin: 8px;
-  height: 60px;
-  width: 70px;
+  padding: 15px 1%;
+  margin: 3px;
+
 }
 .num-btn:hover {
   background-color: #f3f3f3 !important;
@@ -57,7 +52,12 @@ body {
   background-color: #ffffff !important;
 }
 .clear-button {
+  padding: 15px 20px;
   background-color: #ff6347;
+}
+.del-button {
+  padding: 15px 10px;
+  background-color: #ffe100;
 }
 .mx-45 {
   margin-left: 1.8rem !important;
@@ -69,7 +69,7 @@ body {
 .hidden-scroll {
   overflow-y: initial;
   overflow-x: scroll;
-  border-top:  solid #666 2px;
+  border-top:  solid #ccc 1px;
 }
 .hidden-scroll::-webkit-scrollbar {
   height: 4px;
@@ -86,4 +86,12 @@ body {
   width: fit-content;
   margin-left: auto;
   height: 39px;
+}
+.border-1-5 {
+  border: black solid 1.5px;
+} 
+.ac-del {
+  padding: 0 12px !important;
+  display: flex;
+  justify-content: center;
 }
