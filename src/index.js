@@ -1,5 +1,5 @@
-import "./styles/bootstrap.min.css";
-import "./styles/global.css";
+import "./assets/styles/bootstrap.min.css";
+import "./assets/styles/global.css";
 
 import React from "react";
 import ReactDOM from "react-dom";

@@ -1,11 +1,11 @@
 body {
-  padding: 3%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 *,
@@ -40,7 +40,6 @@ body {
 .num-btn {
   padding: 15px 1%;
   margin: 3px;
-
 }
 .num-btn:hover {
   background-color: #f3f3f3 !important;
@@ -69,7 +68,7 @@ body {
 .hidden-scroll {
   overflow-y: initial;
   overflow-x: scroll;
-  border-top:  solid #ccc 1px;
+  border-top: solid #ccc 1px;
 }
 .hidden-scroll::-webkit-scrollbar {
   height: 4px;
@@ -89,9 +88,21 @@ body {
 }
 .border-1-5 {
   border: black solid 1.5px;
-} 
+}
 .ac-del {
   padding: 0 12px !important;
   display: flex;
   justify-content: center;
+}
+
+.footer {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #eaf7ff;
+  border-radius: 5px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  align-items: center;
+  margin-top: 7vh;
 }

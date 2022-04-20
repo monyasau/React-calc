@@ -231,6 +231,7 @@ export default class Calculator extends Component {
         <div className="border border-1 p-1 w-fc mx-auto mt-4">
           Keyboard input is allowed
         </div>
+ 
       </>
     );
   }
