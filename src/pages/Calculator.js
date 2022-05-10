@@ -84,12 +84,14 @@ export default class Calculator extends Component {
     }
   };
   handleBackspace = () => {
+    //we convert the string to an array
     let queriesToArray = this.state.inputedCalculationQuery.split("");
+    //then remove the last value
     queriesToArray.pop();
+  //then convert back to a string
     queriesToArray = queriesToArray.join("");
-    //  console.log(queriesToArray);
+//and update state
     this.setState({
-      // inputedCalculationQuery: this.state.inputedCalculationQuery.replace(this.state.lastInput, ""),
       inputedCalculationQuery: queriesToArray,
     });
   };
